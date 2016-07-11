@@ -10,8 +10,6 @@ namespace ObservableTables.iOS
 	{
 		private ObservableTableViewSource<TaskModel> source;
 
-		private const string ReuseId = "SampleID";
-
 		private TaskListViewModel Vm => Application.Locator.TaskList;
 
 		public TaskListViewController (IntPtr handle) : base (handle)
@@ -44,13 +42,6 @@ namespace ObservableTables.iOS
 				BindTaskCell,
 				factory: () => new TaskListObservableTableSource ());
 
-			//source = Vm.TodoTasks.GetTableViewSource (
-			//	CreateTaskCell,
-			//	BindTaskCell,
-			//	ReuseId,
-			//	factory: () => new TaskListObservableTableSource ());
-
-			//TableView.RegisterClassForCellReuse (typeof (TestTableViewCell), new NSString (ReuseId));
 			TasksTableView.Source = source;
 		}
 
